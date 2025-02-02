@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const sheetID = '1Cod33blcjGFALKYso80iMGJS7kqWVtqU_RyE4jpULsA'; // Replace with your Google Sheet ID
+    const sheetID = '1Cod33blcjGFALKYso80iMGJS7kqWVtqU_RyE4jpULsA'; // Your sheet ID
     const url = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
 
     fetch(url)
