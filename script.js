@@ -4,14 +4,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/Menu!A1:C100?key=${apiKey}`;
 
     fetch(url)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch menu data');
+            }
+            return response.json();
+        })
         .then(data => {
             const entries = data.values;  // Get data from the API response
+            if (!entries) {
+                throw new Error('No menu data available');
+            }
+
             let menuList = "<h2>Menu</h2>";
             let currentCategory = "";
 
-            // Loop through the data to build the menu display
             entries.forEach(row => {
+                if (row.length < 3) return;  // Skip rows that do not have enough data
+
                 const category = row[0];  // Category (first column)
                 const foodItem = row[1];  // Food item (second column)
                 const price = row[2];     // Price (third column)
