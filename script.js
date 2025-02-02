@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const sheetID = '1Cod33blcjGFALKYso80iMGJS7kqWVtqU_RyE4jpULsA'; // Your sheet ID
-    const url = `https://spreadsheets.google.com/feeds/list/${sheetID}/od6/public/values?alt=json`;
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/Menu?key=YOUR_API_KEY`;
 
     fetch(url)
         .then(response => response.json())
